@@ -40,7 +40,7 @@ const GithubState = props => {
   const SetLoading = () => dispatch({ type: SET_LOADING });
 
   return (
-    <GithubContext.Provide
+    <GithubContext.Provider
       value={{
         users: state.users,
         user: state.user,
@@ -50,7 +50,7 @@ const GithubState = props => {
       }}
     >
       {props.children}
-    </GithubContext.Provide>
+    </GithubContext.Provider>
   );
 };
 export default GithubState;
