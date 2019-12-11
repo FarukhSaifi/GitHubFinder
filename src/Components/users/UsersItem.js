@@ -15,8 +15,5 @@ const UsersItem = ({ user: { login, avatar_url, bio } }) => {
     </div>
   );
 };
-// UsersItem.PropTypes = {
-//   user: PropTypes.object.isRequired
-// };
 
 export default UsersItem;
