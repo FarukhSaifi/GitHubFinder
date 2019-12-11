@@ -22,22 +22,39 @@ const GithubState = props => {
 
   // search Users
   const SearchUser = async search => {
-    SetLoading();
+    setLoading();
     const response = await axios.get(
       `https://api.github.com/search/users?q=${search}`
     );
     console.log(response);
-    dispatch({ type: SEARCH_USERS, payload: response.data });
+    dispatch({ type: SEARCH_USERS, payload: response.data.items });
   };
 
   // get USer
+  const getUser = async username => {
+    setLoading();
+    const response = await axios.get(
+      `https://api.github.com/users/${username}`
+    );
+    console.log(response.data);
+    dispatch({ type: GET_USER, payload: response.data });
+  };
 
   // Get Repos
+  const getUserRepos = async userrepos => {
+    setLoading();
+    const response = await axios.get(
+      `https://api.github.com/users/${userrepos}/repos?per_page=5&sort=created:asc`
+    );
+    console.log(response);
+    dispatch({ type: GET_REPOS, payload: response.data });
+  };
 
   // Clear users
+  const ClearUsers = () => dispatch({ type: CLEAR_USER });
 
   // set Loading
-  const SetLoading = () => dispatch({ type: SET_LOADING });
+  const setLoading = () => dispatch({ type: SET_LOADING });
 
   return (
     <GithubContext.Provider
@@ -46,7 +63,10 @@ const GithubState = props => {
         user: state.user,
         repos: state.repos,
         loading: state.loading,
-        SearchUser
+        SearchUser,
+        ClearUsers,
+        getUser,
+        getUserRepos
       }}
     >
       {props.children}

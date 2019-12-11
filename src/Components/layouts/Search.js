@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import GithubContext from "../context/githubContext";
 
-const Search = ({ showClear, ClearUsers, setAlert }) => {
+const Search = ({ setAlert }) => {
   const githubContext = useContext(GithubContext);
 
   const [search, setText] = useState("");
@@ -11,6 +11,7 @@ const Search = ({ showClear, ClearUsers, setAlert }) => {
   const onSubmit = e => {
     e.preventDefault();
     if (search === "") {
+      setAlert("Please Type Something", "danger");
     } else {
       githubContext.SearchUser(search);
       setText("");
@@ -35,11 +36,11 @@ const Search = ({ showClear, ClearUsers, setAlert }) => {
           </button>
         </div>
       </form>
-      {showClear && (
+      {githubContext.users.length > 0 && (
         <button
           type="button"
           class="btn btn-secondary col-12 "
-          onClick={ClearUsers}
+          onClick={githubContext.ClearUsers}
         >
           Clear
         </button>
