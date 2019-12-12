@@ -4,7 +4,7 @@ import {
   CLEAR_USER,
   GET_REPOS,
   SET_LOADING
-} from "./types";
+} from "../types";
 
 export default (state, action) => {
   switch (action.type) {
