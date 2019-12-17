@@ -1,5 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+Check Out here: https://githubfinderfx.netlify.com/
 Github Dashboard: In this Project Using GitHub API and Context API And Make Simple Dashboard.
 
 ## Available Scripts
