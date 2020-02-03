@@ -33,7 +33,7 @@ const Search = () => {
               onChange={onChange}
             />
           </div>
-          <button className="btn btn-success" type="submit">
+          <button className="btn btn-success col-md-2" type="submit">
             Search
           </button>
         </div>

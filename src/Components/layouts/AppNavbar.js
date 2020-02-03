@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 
 class AppNavbar extends Component {
   static defaultProps = {
-    title: "ReactDash",
-    menu1: "Dashboard"
+    title: "GitHub Finder",
+    menu1: "Dashboard",
+    menu2: " About"
   };
   render() {
-    const { title, menu1 } = this.props;
+    const { title, menu1, menu2 } = this.props;
     return (
       <nav className="navbar navbar-expand-sm bg-dark navbar-dark mb-4">
         <div className="container">
@@ -36,12 +37,12 @@ class AppNavbar extends Component {
               </li>
               <li className="nav-item">
                 <Link to="/about" className="nav-link">
-                  About
+                  {menu2}
                 </Link>
               </li>
-              <li to="/user" className="nav-item">
+              {/* <li to="/user" className="nav-item">
                 <Link className="nav-link">Farukh1x95</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
