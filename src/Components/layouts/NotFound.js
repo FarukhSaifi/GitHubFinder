@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function NotFound() {
+const NotFound = () => {
   return (
     <div className="container-fluid">
       <Link to="/">
@@ -9,4 +9,5 @@ export default function NotFound() {
       </Link>
     </div>
   );
-}
+};
+export default NotFound;
