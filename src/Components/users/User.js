@@ -78,16 +78,16 @@ const User = ({ match }) => {
         </div>
       </div>
       <div className=" text-center d-flex justify-content-end ">
-        <div class="badge p-2 badge-pill badge-success">
+        <div className="badge p-2 m-2 badge-pill badge-success">
           Follower: {followers}
         </div>
-        <div class="badge p-2 badge-pill badge-info">
+        <div className="badge p-2 m-2 badge-pill badge-info">
           Following: {following}
         </div>
-        <div class="badge p-2 badge-pill badge-primary">
+        <div className="badge p-2 m-2 badge-pill badge-primary">
           Public Repos: {public_repos}
         </div>
-        <div class="badge p-2 badge-pill badge-danger">
+        <div className="badge p-2 m-2 badge-pill badge-danger">
           Public Gists: {public_gists}
         </div>
       </div>

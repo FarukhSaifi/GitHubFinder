@@ -54,7 +54,7 @@ class Clients extends Component {
                       to={`client/${client.id}`}
                       className="btn btn-secondry btn-sm"
                     >
-                      <i class="fas fa-arrow-circle-right" /> Details
+                      <i className="fas fa-arrow-circle-right" /> Details
                     </Link>
                   </td>
                 </tr>
