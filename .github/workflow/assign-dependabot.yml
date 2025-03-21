@@ -1,0 +1,15 @@
+name: Assign Reviewers Automatically
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  assign_reviewers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if PR is created by Dependabot
+        if: github.actor == 'dependabot[bot]' # Check if the PR was created by Dependabot
+        uses: peter-evans/assign-pull-request-reviewers@v2 # Action to assign reviewers
+        with:
+          reviewers: "FarukhSaifi" # The GitHub username of the reviewer to be assigned
