@@ -1,5 +1,5 @@
 import React from "react";
-import RepoItem from "./repoItem.jsx";
+import RepoItem from "./RepoItem.jsx";
 
 const Repos = ({ repos }) => {
   if (!repos || repos.length === 0)
