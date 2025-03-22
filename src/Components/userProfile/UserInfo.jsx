@@ -20,9 +20,9 @@ const UserInfo = ({ user }) => (
           href={user.blog}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:underline"
+          className="text-indigo-600 hover:underline"
         >
-          Website
+          {user.blog}
         </a>
       </div>
     )}

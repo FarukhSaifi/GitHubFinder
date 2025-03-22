@@ -15,6 +15,7 @@ import {
 const GithubState = ({ children }) => {
   const initialState = {
     users: [],
+    repos: [],
     user: null,
     loading: false,
     error: null,
