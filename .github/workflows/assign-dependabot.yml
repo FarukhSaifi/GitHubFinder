@@ -1,30 +1,25 @@
-name: Auto Assign PR
+name: Auto-Assign Dependabot PRs
 
 on:
   pull_request:
-    types: [opened] # Trigger on PR creation
+    types:
+      - opened
 
 jobs:
   assign:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Assign PR to me
-        uses: actions/github-script@v6
+      - name: Assign PR to User
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const pr = context.payload.pull_request;
-            const assignee = 'FarukhSaifi';  // Replace 'your-username' with your GitHub username
-
-            if (pr.user.login !== assignee) { // Ensure the PR is not created by you
-              await github.rest.issues.addAssignees({
+            if (pr.user.login === 'dependabot[bot]') {
+              github.rest.issues.addAssignees({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 issue_number: pr.number,
-                assignees: [assignee],
+                assignees: ['FarukhSaifi']
               });
             }
