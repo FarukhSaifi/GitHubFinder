@@ -4,7 +4,7 @@ import { LuBuilding, LuLink, LuMapPin, LuTwitter } from "react-icons/lu";
 const UserInfo = ({ user }) => (
   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
     <div className="flex items-center text-gray-600">
-      <LuMapPin className="h-5 w-5 mr-2" />
+      <LuMapPin className="h-5 w-5 mr-2 text-red-600" />
       <span>{user.location || "Not specified"}</span>
     </div>
     {user.company && (
@@ -15,7 +15,7 @@ const UserInfo = ({ user }) => (
     )}
     {user.blog && (
       <div className="flex items-center text-gray-600">
-        <LuLink className="h-5 w-5 mr-2" />
+        <LuLink className="h-5 w-5 mr-2  text-blue-600" />
         <a
           href={user.blog}
           target="_blank"
@@ -28,7 +28,7 @@ const UserInfo = ({ user }) => (
     )}
     {user.twitter_username && (
       <div className="flex items-center text-gray-600">
-        <LuTwitter className="h-5 w-5 mr-2" />
+        <LuTwitter className="h-5 w-5 mr-2 text-blue-400" />
         <a
           href={`https://twitter.com/${user.twitter_username}`}
           target="_blank"
