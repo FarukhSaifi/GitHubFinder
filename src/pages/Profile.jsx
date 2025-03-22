@@ -35,7 +35,7 @@ export default function Profile() {
             <img
               src={user.avatar_url}
               alt={user.name || user.login}
-              className="w-full h-full object-cover rounded-2xl"
+              className="w-full h-full object-cover rounded-tl-2xl rounded-bl-2xl"
             />
 
             {/* GitHub Profile Button - Overlay */}
