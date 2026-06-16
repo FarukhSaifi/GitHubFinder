@@ -28,3 +28,18 @@ updates:
           - "*"
         update-types:
           - "major"
+        # Packages without ESLint 10 peer support break npm install when grouped.
+        exclude-patterns:
+          - "eslint-plugin-import"
+          - "eslint-plugin-react"
+          - "eslint-plugin-prettier"
+          - "eslint-config-prettier"
+          - "@typescript-eslint/*"
+    ignore:
+      # Removed from package.json — not compatible with eslint@10 flat config setup.
+      - dependency-name: "eslint-plugin-import"
+      - dependency-name: "eslint-plugin-react"
+      - dependency-name: "eslint-plugin-prettier"
+      - dependency-name: "eslint-config-prettier"
+      - dependency-name: "@typescript-eslint/eslint-plugin"
+      - dependency-name: "@typescript-eslint/parser"

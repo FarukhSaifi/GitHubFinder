@@ -1,24 +1,13 @@
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import eslint from "vite-plugin-eslint";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const isProd = mode === "production";
 
   return {
-    plugins: [
-      react({ include: /\.(mdx|js|jsx|ts|tsx)$/ }),
-      tailwindcss(),
-      // ESLint during dev only — keeps production builds fast
-      !isProd &&
-        eslint({
-          cache: true,
-          failOnWarning: false,
-          failOnError: false,
-        }),
-    ].filter(Boolean),
+    plugins: [react({ include: /\.(mdx|js|jsx|ts|tsx)$/ }), tailwindcss()],
 
     server: {
       port: 3000,

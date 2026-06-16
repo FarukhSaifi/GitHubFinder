@@ -26,14 +26,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: "lts/*"
+          node-version-file: ".nvmrc"
 
       - name: Install dependencies
         run: npm install
 
       - name: Run lint
         run: npm run lint
-
 
   audit:
     name: Dependency audit
@@ -47,7 +46,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: "lts/*"
+          node-version-file: ".nvmrc"
 
       - name: Install dependencies
         run: npm install
@@ -67,7 +66,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: "lts/*"
+          node-version-file: ".nvmrc"
 
       - name: Install dependencies
         run: npm install
@@ -75,3 +74,20 @@ jobs:
       - name: Build
         run: npm run build
 
+  # Single required check for branch protection / Netlify deploy gating.
+  ci-success:
+    name: CI passed
+    runs-on: ubuntu-latest
+    needs: [lint, audit, build]
+    if: always()
+
+    steps:
+      - name: Verify all jobs succeeded
+        run: |
+          if [ "${{ needs.lint.result }}" != "success" ] || \
+             [ "${{ needs.audit.result }}" != "success" ] || \
+             [ "${{ needs.build.result }}" != "success" ]; then
+            echo "CI failed — do not merge or deploy."
+            exit 1
+          fi
+          echo "CI passed — safe to merge and deploy to Netlify."

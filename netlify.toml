@@ -1,0 +1,26 @@
+# Netlify — production deploys only from master; previews must pass lint + build.
+# Failed builds are not published (Netlify stops on non-zero exit).
+
+[build]
+  command = "npm run lint && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--no-audit"
+
+# Skip deploys for non-PR feature branches (production + deploy-preview still run).
+[context.branch-deploy]
+  ignore = "exit 0"
+
+[context.production]
+  command = "npm run lint && npm run build"
+
+[context.deploy-preview]
+  command = "npm run lint && npm run build"
+
+# SPA fallback for React Router client-side routes.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
