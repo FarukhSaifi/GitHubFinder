@@ -6,7 +6,7 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "22"
+  NODE_VERSION = "24"
   NPM_FLAGS = "--no-audit"
 
 # Skip deploys for non-PR feature branches (production + deploy-preview still run).
