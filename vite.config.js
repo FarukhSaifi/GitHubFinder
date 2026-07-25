@@ -24,8 +24,7 @@ export default defineConfig(({ mode }) => {
       include: ["react", "react-dom", "react-router-dom", "axios"],
     },
 
-    esbuild: {
-      drop: isProd ? ["console", "debugger"] : [],
+    oxc: {
       legalComments: "none",
     },
 
@@ -35,8 +34,16 @@ export default defineConfig(({ mode }) => {
       // Skip gzip size pass — noticeably faster builds on CI
       reportCompressedSize: false,
       sourcemap: false,
-      rollupOptions: {
+      rolldownOptions: {
         output: {
+          ...(isProd && {
+            minify: {
+              compress: {
+                dropConsole: true,
+                dropDebugger: true,
+              },
+            },
+          }),
           manualChunks(id) {
             if (!id.includes("node_modules")) return;
 
